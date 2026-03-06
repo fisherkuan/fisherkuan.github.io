@@ -115,7 +115,16 @@ a:hover {
 .hero .tagline {
     font-size: 18px;
     color: #6b7280;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
+}
+
+.hero .summary {
+    font-size: 16px;
+    color: #4b5563;
+    max-width: 560px;
+    line-height: 1.6;
+    margin-top: 32px;
+    margin-bottom: 48px;
 }
 
 .contact-links {
@@ -450,6 +459,10 @@ a:hover {
 
     .hero .title {
         font-size: 18px;
+    }
+
+    .hero .summary {
+        font-size: 15px;
     }
 
     .contact-links {
