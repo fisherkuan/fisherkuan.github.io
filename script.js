@@ -1,3 +1,41 @@
+// Theme toggle
+(function() {
+    const btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+
+    const root = document.documentElement;
+    const media = window.matchMedia('(prefers-color-scheme: dark)');
+
+    function currentTheme() {
+        return root.dataset.theme || (media.matches ? 'dark' : 'light');
+    }
+
+    function updateLabel() {
+        const dark = currentTheme() === 'dark';
+        btn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+    }
+
+    btn.addEventListener('click', function() {
+        const next = currentTheme() === 'dark' ? 'light' : 'dark';
+        try {
+            if ((next === 'dark') === media.matches) {
+                // Back to matching the system preference — drop the override
+                delete root.dataset.theme;
+                localStorage.removeItem('theme');
+            } else {
+                root.dataset.theme = next;
+                localStorage.setItem('theme', next);
+            }
+        } catch (e) {
+            root.dataset.theme = next;
+        }
+        updateLabel();
+    });
+
+    media.addEventListener('change', updateLabel);
+    updateLabel();
+})();
+
 // Navigation scroll behavior
 (function() {
     const nav = document.getElementById('nav');

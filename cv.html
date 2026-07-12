@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fisher Kuan — Agentic Engineering Lead & AI Architect. One-page CV, printable as PDF.">
     <title>Fisher Kuan — CV</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <style>
         * {
             margin: 0;
@@ -14,7 +16,7 @@
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
             font-size: 10pt;
-            line-height: 1.5;
+            line-height: 1.35;
             color: #1a1a1a;
             background: #f0f0f0;
         }
@@ -24,7 +26,7 @@
             min-height: 297mm;
             margin: 20px auto;
             background: #fff;
-            padding: 14mm 16mm 12mm;
+            padding: 11mm 14mm 9mm;
         }
 
         /* Print button */
@@ -46,12 +48,12 @@
         /* Header */
         header {
             border-bottom: 2px solid #1a1a1a;
-            padding-bottom: 6px;
-            margin-bottom: 8px;
+            padding-bottom: 7px;
+            margin-bottom: 10px;
         }
 
         header h1 {
-            font-size: 20pt;
+            font-size: 18pt;
             font-weight: 700;
             letter-spacing: -0.5px;
             line-height: 1.1;
@@ -68,7 +70,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 4px 14px;
-            font-size: 8.5pt;
+            font-size: 9pt;
             color: #444;
         }
 
@@ -81,7 +83,7 @@
 
         /* Sections */
         section {
-            margin-bottom: 10px;
+            margin-bottom: 9px;
         }
 
         h2 {
@@ -97,7 +99,7 @@
 
         /* Summary */
         .summary p {
-            font-size: 9.5pt;
+            font-size: 10pt;
             color: #222;
         }
 
@@ -105,15 +107,15 @@
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 3px 12px;
+            gap: 6px 14px;
         }
 
         .skill-item strong {
-            font-size: 9pt;
+            font-size: 9.5pt;
         }
 
         .skill-item span {
-            font-size: 8.5pt;
+            font-size: 9pt;
             color: #555;
         }
 
@@ -126,7 +128,7 @@
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 2px;
+            margin-bottom: 3px;
         }
 
         .job-header h3 {
@@ -138,6 +140,10 @@
             font-size: 9pt;
             color: #555;
             font-style: italic;
+        }
+
+        .job-header .role {
+            font-weight: 400;
         }
 
         .job-header .date {
@@ -154,7 +160,7 @@
 
         .job ul li {
             font-size: 9pt;
-            margin-bottom: 2px;
+            margin-bottom: 1px;
             color: #222;
         }
 
@@ -169,12 +175,50 @@
             color: #1a1a1a;
         }
 
+        /* Role sub-entries (multiple positions at one company) */
+        .job > .role {
+            position: relative;
+            padding-left: 11px;
+            margin-top: 5px;
+            border-left: 1.5px solid #ccc;
+        }
+
+        .job > .role::before {
+            content: "";
+            position: absolute;
+            left: -4px;
+            top: 4px;
+            width: 6px;
+            height: 6px;
+            background: #1a1a1a;
+            border-radius: 50%;
+        }
+
+        .role-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1px;
+        }
+
+        .role-header h4 {
+            font-size: 9.5pt;
+            font-weight: 700;
+        }
+
+        .role-date {
+            font-size: 8pt;
+            color: #666;
+            white-space: nowrap;
+            margin-left: 8px;
+        }
+
         /* Bottom grid */
         .bottom-grid {
             display: grid;
             grid-template-columns: 1.2fr 1.6fr 0.8fr;
-            gap: 8px;
-            margin-top: 4px;
+            gap: 12px;
+            margin-top: 6px;
         }
 
         .bottom-grid h2 {
@@ -193,7 +237,7 @@
         }
 
         .edu-list .school {
-            font-size: 8.5pt;
+            font-size: 9pt;
             color: #555;
         }
 
@@ -203,6 +247,11 @@
         }
 
         /* Print styles */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
         @media print {
             body {
                 background: #fff;
@@ -210,9 +259,10 @@
 
             .page {
                 margin: 0;
-                padding: 12mm 15mm 10mm;
+                padding: 11mm 14mm 9mm;
                 box-shadow: none;
                 width: 100%;
+                min-height: auto;
             }
 
             .print-btn {
@@ -234,18 +284,18 @@
 
         <header>
             <h1>Fisher Kuan</h1>
-            <p class="title">Senior AI Architect & Engineer</p>
+            <p class="title">Agentic Engineering Lead · AI Architect & Engineer</p>
             <div class="contact">
-                <a href="mailto:kuanfisher@gmail.com">kuanfisher@gmail.com</a>
+                <a href="mailto:mail@fisherkuan.com">mail@fisherkuan.com</a>
                 <a href="https://linkedin.com/in/fisherkuan" target="_blank">linkedin.com/in/fisherkuan</a>
                 <a href="https://github.com/fisherkuan" target="_blank">github.com/fisherkuan</a>
-                <a href="https://fisherkuan.github.io" target="_blank">fisherkuan.github.io (Full CV)</a>
+                <a href="https://fisherkuan.com" target="_blank">fisherkuan.com (Full CV)</a>
             </div>
         </header>
 
         <section class="summary">
             <h2>Summary</h2>
-            <p>Senior AI Engineer with 7 years building production AI systems, specializing in agentic engineering, GenAI/LLM applications, and end-to-end MLOps. Hands-on advocate for agentic development practices — driving adoption, running workshops, and architecting agentic systems for enterprise clients.</p>
+            <p>Agentic Engineering Lead with 10+ years of engineering, 7 shipping production AI for Fortune 500 and public-sector clients. Leads MbarQ's agentic engineering practice — standards, tooling, and enablement for building software with AI agents — on top of end-to-end GenAI/LLM architecture and MLOps delivery.</p>
         </section>
 
         <section class="skills">
@@ -253,11 +303,15 @@
             <div class="skills-grid">
                 <div class="skill-item">
                     <strong>Agentic Engineering</strong><br>
-                    <span>Claude Code, GitHub Copilot, agentic workflows</span>
+                    <span>Claude Code, multi-agent orchestration, skill &amp; context engineering, MCP, sandboxing</span>
+                </div>
+                <div class="skill-item">
+                    <strong>Evaluation & Reliability</strong><br>
+                    <span>Eval harnesses, LLM-as-judge, prompt/agent regression testing, observability</span>
                 </div>
                 <div class="skill-item">
                     <strong>GenAI / LLMs</strong><br>
-                    <span>RAG, prompt engineering, evaluation, Azure AI Foundry, LangChain</span>
+                    <span>RAG, prompt engineering, Azure AI Foundry, LangChain</span>
                 </div>
                 <div class="skill-item">
                     <strong>MLOps</strong><br>
@@ -280,22 +334,37 @@
             <div class="job">
                 <div class="job-header">
                     <div>
-                        <h3>Senior AI Architect & Engineer — <span class="company">MbarQ (Belgium)</span></h3>
+                        <h3>MbarQ <span class="company">(Belgium)</span></h3>
                     </div>
                     <span class="date">Apr 2025 – Present</span>
                 </div>
-                <ul>
-                    <li>Lead end-to-end GenAI engagements: discovery, architecture, hands-on implementation, and go-live support.</li>
-                    <li>Championed company-wide agentic engineering adoption: led research and industry networking, hosted internal workshops on best practices, and built an internal scaffolding repository to standardize and accelerate team-wide adoption.</li>
-                </ul>
-                <p class="client"><strong>LaunchPad</strong> — Built a modular RAG accelerator framework on Azure for enterprise chatbot deployments; extended it with an agentic architecture to automate multi-step workflows. Tech: Python, FastAPI, Azure OpenAI, LangChain, Vue 3.</p>
-                <p class="client"><strong>Fiducia 4.0 (Puratos)</strong> — Developed ML system predicting QC scores across multi-plant food production. Integrated raw material, process, and QC data sources into automated Azure ML pipelines. Enabled proactive quality control for Belgian and Mexican facilities.</p>
+                <div class="role">
+                    <div class="role-header">
+                        <h4>Agentic Engineering Lead</h4>
+                        <span class="role-date">May 2026 – Present</span>
+                    </div>
+                    <ul>
+                        <li>Lead MbarQ's agentic engineering practice — standards, tooling, and enablement for building with AI coding agents company-wide.</li>
+                        <li>Defined the LLM-Wiki way of working (agent-maintained team knowledge vault) and built its tooling: an autonomous Claude Code Teams bot on Azure and a desktop app for non-technical "AI Translators."</li>
+                    </ul>
+                </div>
+                <div class="role">
+                    <div class="role-header">
+                        <h4>Senior AI Architect &amp; Engineer</h4>
+                        <span class="role-date">Apr 2025 – May 2026</span>
+                    </div>
+                    <ul>
+                        <li>Led end-to-end GenAI engagements: discovery, architecture, hands-on implementation, and go-live support.</li>
+                    </ul>
+                    <p class="client"><strong>LaunchPad</strong> — Modular RAG accelerator framework on Azure for enterprise chatbots, extended with an agentic architecture for multi-step workflows. Tech: Python, FastAPI, Azure OpenAI, LangChain, Vue 3.</p>
+                    <p class="client"><strong>Fiducia 4.0 (Puratos)</strong> — ML system predicting QC scores across multi-plant food production; automated Azure ML pipelines integrating raw-material, process, and QC data for proactive quality control.</p>
+                </div>
             </div>
 
             <div class="job">
                 <div class="job-header">
                     <div>
-                        <h3>AI Solution Architect & Tech Lead — <span class="company">Nemeon (Belgium)</span></h3>
+                        <h3>Nemeon <span class="company">(Belgium)</span> — <span class="role">AI Solution Architect &amp; Tech Lead</span></h3>
                     </div>
                     <span class="date">Apr 2024 – Mar 2025</span>
                 </div>
@@ -309,7 +378,7 @@
             <div class="job">
                 <div class="job-header">
                     <div>
-                        <h3>Senior ML & MLOps Engineer — <span class="company">Dataroots (Belgium)</span></h3>
+                        <h3>Dataroots <span class="company">(Belgium)</span> — <span class="role">Senior ML &amp; MLOps Engineer</span></h3>
                     </div>
                     <span class="date">Jan 2022 – Nov 2023</span>
                 </div>
@@ -323,38 +392,14 @@
             <div class="job">
                 <div class="job-header">
                     <div>
-                        <h3>AI Engineer — <span class="company">Arinti (Belgium)</span></h3>
+                        <h3>Earlier Experience</h3>
                     </div>
-                    <span class="date">Nov 2020 – Dec 2021</span>
+                    <span class="date">2015 – 2021</span>
                 </div>
                 <ul>
-                    <li>Streamlined pipelines with Azure Data Factory/Synapse and Azure DevOps.</li>
-                </ul>
-                <p class="client"><strong>Demand Forecasting (Unilever)</strong> — Developed sale and demand forecasting applications to reduce shortages and overproduction, shaping production strategies across facilities. Tech: Databricks, PySpark, Azure (Azure ML, Cognitive Services).</p>
-            </div>
-
-            <div class="job">
-                <div class="job-header">
-                    <div>
-                        <h3>Data Scientist — <span class="company">Crunch Analytics (Belgium)</span></h3>
-                    </div>
-                    <span class="date">Nov 2019 – Nov 2020</span>
-                </div>
-                <ul>
-                    <li>Delivered NLP, web scraping, and optimization projects end-to-end; built feature extraction pipelines with BigQuery.</li>
-                </ul>
-            </div>
-
-            <div class="job">
-                <div class="job-header">
-                    <div>
-                        <h3>R&amp;D Engineer — <span class="company">TSMC (Taiwan)</span></h3>
-                    </div>
-                    <span class="date">Jan 2015 – Aug 2018</span>
-                </div>
-                <ul>
-                    <li>Developed ML models for semiconductor packaging optimization; reduced product development timelines by 20%.</li>
-                    <li>Led thermal/structural analysis workstreams influencing reliability and design decisions.</li>
+                    <li><strong>Arinti (Belgium) · AI Engineer</strong> — Demand forecasting for Unilever on Databricks/PySpark/Azure ML, reducing shortages and overproduction across facilities. (2020–2021)</li>
+                    <li><strong>Crunch Analytics (Belgium) · Data Scientist</strong> — End-to-end NLP, web scraping, and optimization projects. (2019–2020)</li>
+                    <li><strong>TSMC (Taiwan) · R&amp;D Engineer</strong> — ML models for semiconductor packaging optimization; cut product development timelines by 20%. (2015–2018)</li>
                 </ul>
             </div>
 
@@ -366,11 +411,8 @@
                 <ul class="cert-list">
                     <li>Azure AI Engineer Associate</li>
                     <li>Azure Data Scientist Associate</li>
-                    <li>Azure Data Engineer Associate</li>
                     <li>Databricks Associate Developer</li>
                     <li>TensorFlow Developer</li>
-                    <li>Prefect Associate</li>
-                    <li>Google Project Management</li>
                 </ul>
             </section>
 
@@ -382,12 +424,8 @@
                         <span class="school">KU Leuven — 2018–2019</span>
                     </li>
                     <li>
-                        MSc, Materials Science &amp; Engineering<br>
-                        <span class="school">National Chiao Tung University — 2012–2014</span>
-                    </li>
-                    <li>
-                        BSc, Nano Science &amp; Engineering<br>
-                        <span class="school">National Chiao Tung University — 2008–2012</span>
+                        MSc Materials Science · BSc Nano Science<br>
+                        <span class="school">National Chiao Tung University — 2008–2014</span>
                     </li>
                 </ul>
             </section>

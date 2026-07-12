@@ -5,6 +5,57 @@
     padding: 0;
 }
 
+/* Theme */
+:root {
+    color-scheme: light dark;
+    --bg: #ffffff;
+    --bg-alt: #f9fafb;
+    --text: #1a1a1a;
+    --text-body: #4b5563;
+    --text-muted: #6b7280;
+    --text-faint: #9ca3af;
+    --accent: #0d9488;
+    --accent-hover: #0f766e;
+    --border: #e5e7eb;
+    --nav-bg: rgba(255, 255, 255, 0.95);
+}
+
+/* Dark palette — applied via system preference (unless overridden to light)
+   or via explicit data-theme="dark". Keep both blocks in sync. */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --bg: #0f1115;
+        --bg-alt: #161a21;
+        --text: #f3f4f6;
+        --text-body: #b3bac5;
+        --text-muted: #8b93a1;
+        --text-faint: #667081;
+        --accent: #2dd4bf;
+        --accent-hover: #5eead4;
+        --border: #262b34;
+        --nav-bg: rgba(15, 17, 21, 0.9);
+    }
+}
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0f1115;
+    --bg-alt: #161a21;
+    --text: #f3f4f6;
+    --text-body: #b3bac5;
+    --text-muted: #8b93a1;
+    --text-faint: #667081;
+    --accent: #2dd4bf;
+    --accent-hover: #5eead4;
+    --border: #262b34;
+    --nav-bg: rgba(15, 17, 21, 0.9);
+}
+
+:root[data-theme="light"] {
+    color-scheme: light;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -13,18 +64,71 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-size: 18px;
     line-height: 1.7;
-    color: #1a1a1a;
-    background-color: #ffffff;
+    color: var(--text);
+    background-color: var(--bg);
 }
 
 a {
-    color: #0d9488;
+    color: var(--accent);
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
 a:hover {
-    color: #0f766e;
+    color: var(--accent-hover);
+}
+
+/* Theme toggle */
+.theme-toggle {
+    position: fixed;
+    /* Vertically centered on the fixed nav bar text (nav is ~62px tall) */
+    top: 11px;
+    right: 20px;
+    z-index: 101;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--bg);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+/* Icon visibility is driven entirely by CSS so the correct icon
+   shows before script.js runs: moon in light theme, sun in dark. */
+.theme-toggle .icon-sun {
+    display: none;
+}
+
+.theme-toggle .icon-moon {
+    display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .theme-toggle .icon-sun {
+        display: block;
+    }
+
+    :root:not([data-theme="light"]) .theme-toggle .icon-moon {
+        display: none;
+    }
+}
+
+:root[data-theme="dark"] .theme-toggle .icon-sun {
+    display: block;
+}
+
+:root[data-theme="dark"] .theme-toggle .icon-moon {
+    display: none;
 }
 
 /* Container */
@@ -40,9 +144,9 @@ a:hover {
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--nav-bg);
     backdrop-filter: blur(8px);
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--border);
     z-index: 100;
     opacity: 0;
     transform: translateY(-100%);
@@ -66,11 +170,11 @@ a:hover {
 .nav-name {
     font-weight: 600;
     font-size: 18px;
-    color: #1a1a1a;
+    color: var(--text);
 }
 
 .nav-name:hover {
-    color: #0d9488;
+    color: var(--accent);
 }
 
 .nav-links {
@@ -80,11 +184,11 @@ a:hover {
 
 .nav-links a {
     font-size: 16px;
-    color: #6b7280;
+    color: var(--text-muted);
 }
 
 .nav-links a:hover {
-    color: #0d9488;
+    color: var(--accent);
 }
 
 /* Hero Section */
@@ -108,22 +212,50 @@ a:hover {
 
 .hero .title {
     font-size: 24px;
-    color: #0d9488;
+    color: var(--accent);
     margin-bottom: 8px;
 }
 
 .hero .tagline {
     font-size: 18px;
-    color: #6b7280;
+    color: var(--text-muted);
     margin-bottom: 24px;
 }
 
 .hero .summary {
     font-size: 16px;
-    color: #4b5563;
+    color: var(--text-body);
     max-width: 560px;
     line-height: 1.6;
-    margin: 32px auto 48px;
+    margin: 32px auto 36px;
+}
+
+/* Highlights strip */
+.highlights {
+    display: flex;
+    justify-content: center;
+    gap: 56px;
+    margin-bottom: 40px;
+}
+
+.highlight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.highlight-number {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1.2;
+}
+
+.highlight-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
 }
 
 .contact-links {
@@ -138,11 +270,11 @@ a:hover {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #1a1a1a;
+    color: var(--text);
 }
 
 .contact-links a:hover {
-    color: #0d9488;
+    color: var(--accent);
 }
 
 .contact-links svg {
@@ -158,12 +290,12 @@ a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #6b7280;
+    color: var(--text-muted);
     transition: color 0.2s ease;
 }
 
 .scroll-hint:hover {
-    color: #0d9488;
+    color: var(--accent);
 }
 
 .scroll-text {
@@ -187,14 +319,14 @@ a:hover {
 }
 
 .section-alt {
-    background-color: #f9fafb;
+    background-color: var(--bg-alt);
 }
 
 .section h2 {
     font-size: 28px;
     font-weight: 600;
     margin-bottom: 40px;
-    color: #1a1a1a;
+    color: var(--text);
 }
 
 /* Skills Grid */
@@ -207,13 +339,13 @@ a:hover {
 .skill-category h3 {
     font-size: 17px;
     font-weight: 600;
-    color: #0d9488;
+    color: var(--accent);
     margin-bottom: 8px;
 }
 
 .skill-category p {
     font-size: 16px;
-    color: #4b5563;
+    color: var(--text-body);
     line-height: 1.6;
 }
 
@@ -221,7 +353,7 @@ a:hover {
 .job {
     padding-bottom: 40px;
     margin-bottom: 40px;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--border);
 }
 
 .job:last-child {
@@ -230,28 +362,23 @@ a:hover {
     padding-bottom: 0;
 }
 
-.job-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 16px;
-}
-
 .job h3 {
     font-size: 19px;
     font-weight: 600;
-    color: #1a1a1a;
+    color: var(--text);
     margin-bottom: 4px;
 }
 
-.job .company {
-    font-size: 16px;
-    color: #6b7280;
+.job .role-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 8px 0 12px;
 }
 
 .job .date {
     font-size: 15px;
-    color: #6b7280;
+    color: var(--text-muted);
     white-space: nowrap;
 }
 
@@ -265,7 +392,7 @@ a:hover {
     padding-left: 20px;
     margin-bottom: 10px;
     font-size: 16px;
-    color: #4b5563;
+    color: var(--text-body);
 }
 
 .job li::before {
@@ -275,28 +402,96 @@ a:hover {
     top: 10px;
     width: 6px;
     height: 6px;
-    background-color: #0d9488;
+    background-color: var(--accent);
     border-radius: 50%;
 }
 
 .job .client {
     margin-top: 16px;
     padding: 16px;
-    background-color: #ffffff;
-    border-left: 3px solid #0d9488;
+    background-color: var(--bg);
+    border-left: 3px solid var(--accent);
     font-size: 16px;
-    color: #4b5563;
+    color: var(--text-body);
 }
 
 .job .client strong {
-    color: #1a1a1a;
+    color: var(--text);
+}
+
+/* Company header (for multi-role companies) */
+.company-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+}
+
+.company-header .company-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.company-name .company-loc {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-muted);
+}
+
+/* Role timeline (multiple positions at one company) */
+.timeline {
+    margin-top: 12px;
+    padding-left: 24px;
+    border-left: 2px solid var(--border);
+}
+
+.role {
+    position: relative;
+    padding-bottom: 24px;
+}
+
+.role:last-child {
+    padding-bottom: 0;
+}
+
+.role::before {
+    content: "";
+    position: absolute;
+    left: -31px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    background-color: var(--accent);
+    border: 2px solid var(--bg-alt);
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--border);
+}
+
+.role-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.role-header h4 {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.role-header .date {
+    font-size: 15px;
+    color: var(--text-muted);
+    white-space: nowrap;
 }
 
 /* Projects */
 .project {
     padding-bottom: 32px;
     margin-bottom: 32px;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--border);
 }
 
 .project:last-child {
@@ -308,7 +503,7 @@ a:hover {
 .project h3 {
     font-size: 19px;
     font-weight: 600;
-    color: #1a1a1a;
+    color: var(--text);
     margin-bottom: 8px;
     display: flex;
     align-items: center;
@@ -316,25 +511,25 @@ a:hover {
 }
 
 .project-link {
-    color: #9ca3af;
+    color: var(--text-faint);
     transition: color 0.2s ease;
     display: inline-flex;
 }
 
 .project-link:hover {
-    color: #0d9488;
+    color: var(--accent);
 }
 
 .project-tech {
     font-size: 14px;
-    color: #0d9488;
+    color: var(--accent);
     font-weight: 500;
     margin-bottom: 12px;
 }
 
 .project p {
     font-size: 16px;
-    color: #4b5563;
+    color: var(--text-body);
     line-height: 1.6;
 }
 
@@ -348,7 +543,7 @@ a:hover {
     padding-left: 20px;
     margin-bottom: 12px;
     font-size: 17px;
-    color: #4b5563;
+    color: var(--text-body);
 }
 
 .cert-list li::before {
@@ -358,7 +553,7 @@ a:hover {
     top: 10px;
     width: 6px;
     height: 6px;
-    background-color: #0d9488;
+    background-color: var(--accent);
     border-radius: 50%;
 }
 
@@ -378,18 +573,18 @@ a:hover {
 .edu-item h3 {
     font-size: 18px;
     font-weight: 600;
-    color: #1a1a1a;
+    color: var(--text);
     margin-bottom: 4px;
 }
 
 .edu-item .school {
     font-size: 16px;
-    color: #6b7280;
+    color: var(--text-muted);
 }
 
 .edu-item .date {
     font-size: 15px;
-    color: #6b7280;
+    color: var(--text-muted);
 }
 
 /* Footer */
@@ -413,17 +608,17 @@ a:hover {
 }
 
 .footer-links a {
-    color: #1a1a1a;
+    color: var(--text);
     font-size: 16px;
 }
 
 .footer-links a:hover {
-    color: #0d9488;
+    color: var(--accent);
 }
 
 .location-footer {
     font-size: 16px;
-    color: #6b7280;
+    color: var(--text-muted);
     margin-bottom: 40px;
 }
 
@@ -434,7 +629,7 @@ a:hover {
 .languages h3 {
     font-size: 15px;
     font-weight: 600;
-    color: #6b7280;
+    color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin-bottom: 8px;
@@ -442,15 +637,38 @@ a:hover {
 
 .languages p {
     font-size: 16px;
-    color: #4b5563;
+    color: var(--text-body);
 }
 
 .copyright {
     font-size: 15px;
-    color: #9ca3af;
+    color: var(--text-faint);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .nav,
+    a,
+    .project-link,
+    .scroll-hint {
+        transition: none;
+    }
 }
 
 /* Responsive */
+@media (max-width: 900px) {
+    /* Move the toggle out of the nav bar's way on narrow screens */
+    .theme-toggle {
+        top: auto;
+        bottom: 20px;
+        right: 16px;
+    }
+}
+
 @media (max-width: 768px) {
     .hero h1 {
         font-size: 36px;
@@ -464,6 +682,18 @@ a:hover {
         font-size: 15px;
     }
 
+    .highlights {
+        gap: 32px;
+    }
+
+    .highlight-number {
+        font-size: 26px;
+    }
+
+    .highlight-label {
+        font-size: 11px;
+    }
+
     .contact-links {
         flex-direction: column;
         gap: 12px;
@@ -474,8 +704,9 @@ a:hover {
         gap: 24px;
     }
 
-    .job-header {
+    .company-header {
         flex-direction: column;
+        align-items: flex-start;
         gap: 4px;
     }
 
