@@ -175,6 +175,10 @@
                         <div class="client">
                             <strong>AI Translator Workflow App</strong> — A cross-platform desktop app that wraps Claude Code in headless mode to guide non-technical "AI Translators" through a structured, multi-stage project-scoping workflow, writing artifacts straight into the shared team vault. Tech: Python, FastAPI, React, pywebview, PyInstaller.
                         </div>
+
+                        <div class="client">
+                            <strong>Agentic Landscape Site</strong> — A static microsite that maps MbarQ's entire agentic way of working on one screen — pillars, agent layer, and role-based onboarding paths — and distributes the team's desktop apps. Content is federated from four repos at build time, guarded by link-check gates, a doc-drift tripwire, and post-deploy smoke tests. Tech: HTML/CSS/vanilla JS, Python, GitHub Actions, Azure Static Web Apps.
+                        </div>
                     </div>
                     <div class="role">
                         <div class="role-header">
@@ -190,7 +194,7 @@
                         </div>
 
                         <div class="client">
-                            <strong>Fiducia 4.0 (Puratos)</strong> — Developed ML system predicting QC scores across multi-plant food production. Integrated raw material, process, and QC data sources into automated Azure ML pipelines. Enabled proactive quality control for Belgian and Mexican facilities.
+                            <strong>Fiducia 4.0 (Puratos)</strong> — Predictive quality control for food manufacturing: ML classifiers that predict QC failures of finished products at run level, before lab results come in, combining plant process/sensor (PI) data, raw-material lineage, and historical QC measurements. Built the production-grade pipeline end-to-end on Azure ML — automated batch detection and feature engineering, per-product/per-criterion model training, and drift monitoring — deployed across multiple production sites with differing data availability. "Golden recipe" analysis translates the models into optimal process settings and diagnostics operators can act on, linking predictions to concrete quality and cost improvements. Tech: Python, Azure ML.
                         </div>
                     </div>
                 </div>
@@ -277,14 +281,20 @@
             <h2>Side Projects</h2>
 
             <article class="project">
+                <h3>Dayboard</h3>
+                <p class="project-tech">Python (stdlib-only) • SQLite • Claude Code • GitHub CLI</p>
+                <p>A one-screen command center for the agentic working day: auto-detects Claude Code sessions, open PRs, and TODO items to claim into today's plan, launches purpose-seeded agent sessions in the right repo, and drafts AI-merged weekly timesheets from daily diary notes. Model calls fire only on explicit human action, and every AI output is validated rather than trusted.</p>
+            </article>
+
+            <article class="project">
                 <h3>
-                    Event Attendance App
-                    <a href="https://github.com/fisherkuan/event-attendance-app" target="_blank" rel="noopener" class="project-link" aria-label="View on GitHub">
+                    Lilai
+                    <a href="https://github.com/fisherkuan/lilai" target="_blank" rel="noopener" class="project-link" aria-label="View on GitHub">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                     </a>
                 </h3>
-                <p class="project-tech">Node.js • Express • Google Calendar API • PWA</p>
-                <p>Event RSVP platform with real-time attendance tracking, Google Calendar integration, mobile-first responsive design, and offline PWA support.</p>
+                <p class="project-tech">Node.js • Express • PostgreSQL • WebSockets • Stripe • PWA</p>
+                <p>Event RSVP platform serving a real community: Google Calendar acts as the CMS, attendance updates live over WebSockets, and a Stripe-backed group treasury tracks donations toward funding goals. Offline-capable PWA deployed on Heroku with automated encrypted database backups.</p>
             </article>
 
             <article class="project">
